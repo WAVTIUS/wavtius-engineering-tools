@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="WAVTIUS free-space microwave link budget calculator — EIRP, FSPL, RSL, and sensitivity margin. Not for path deployment sign-off."
+  />
+  <title>WAVTIUS — Microwave Link Budget Calculator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to calculator</a>
+  <div class="page">
+    <header class="hero">
+      <div class="hero__bar">
+        <a class="hero__logo-link" id="hero-logo-link" href="#" aria-label="WAVTIUS">
+          <img
+            class="hero__logo"
+            src="assets/wavtius-logo.svg"
+            alt="WAVTIUS"
+            width="160"
+            height="48"
+          />
+        </a>
+        <span class="hero__badge">Engineering Tools</span>
+      </div>
+      <div class="hero__content">
+        <h1 class="hero__brand">Microwave Link Budget Calculator</h1>
+        <p class="hero__lede">
+          Free-space link budget analysis for preliminary microwave path assessment.
+          Results update automatically as you edit parameters. This tool uses FSPL only —
+          it does not model rain, multipath, terrain, atmospheric effects, or ITU-R availability.
+        </p>
+      </div>
+    </header>
+
+    <main id="main-content" class="layout">
+      <section class="panel panel--inputs" aria-labelledby="inputs-heading">
+        <div class="panel__header">
+          <h2 id="inputs-heading">Link Parameters</h2>
+          <p class="panel__hint">All fields required. Values are validated in real time.</p>
+        </div>
+
+        <form id="link-budget-form" novalidate>
+          <div class="field-grid">
+            <div class="field" data-field="frequencyGHz">
+              <label class="field__label" for="input-frequency">Frequency</label>
+              <div class="field__control">
+                <input
+                  id="input-frequency"
+                  name="frequencyGHz"
+                  type="number"
+                  inputmode="decimal"
+                  step="any"
+                  min="0"
+                  required
+                  aria-describedby="error-frequency"
+                />
+                <span class="field__unit">GHz</span>
+              </div>
+              <p class="field__error" id="error-frequency" role="alert" hidden></p>
+            </div>
+
+            <div class="field" data-field="distanceKm">
+              <label class="field__label" for="input-distance">Distance</label>
+              <div class="field__control">
+                <input
+                  id="input-distance"
+                  name="distanceKm"
+                  type="number"
+                  inputmode="decimal"
+                  step="any"
+                  min="0"
+                  required
+                  aria-describedby="error-distance"
+                />
+                <span class="field__unit">km</span>
+              </div>
+              <p class="field__error" id="error-distance" role="alert" hidden></p>
+            </div>
+
+            <div class="field" data-field="transmitPowerDbm">
+              <label class="field__label" for="input-tx-power">Transmit Power</label>
+              <div class="field__control">
+                <input
+                  id="input-tx-power"
+                  name="transmitPowerDbm"
+                  type="number"
+                  inputmode="decimal"
+                  step="any"
+                  required
+                  aria-describedby="hint-tx-power error-tx-power"
+                />
+                <span class="field__unit">dBm</span>
+              </div>
+              <p class="field__hint" id="hint-tx-power">
+                Power at the transmit antenna port. If using radio output power, subtract TX feedline losses first.
+              </p>
+              <p class="field__error" id="error-tx-power" role="alert" hidden></p>
+            </div>
+
+            <div class="field" data-field="txAntennaGainDbi">
+              <label class="field__label" for="input-tx-gain">TX Antenna Gain</label>
+              <div class="field__control">
+                <input
+                  id="input-tx-gain"
+                  name="txAntennaGainDbi"
+                  type="number"
+                  inputmode="decimal"
+                  step="any"
+                  required
+                  aria-describedby="error-tx-gain"
+                />
+                <span class="field__unit">dBi</span>
+              </div>
+              <p class="field__error" id="error-tx-gain" role="alert" hidden></p>
+            </div>
+
+            <div class="field" data-field="rxAntennaGainDbi">
+              <label class="field__label" for="input-rx-gain">RX Antenna Gain</label>
+              <div class="field__control">
+                <input
+                  id="input-rx-gain"
+                  name="rxAntennaGainDbi"
+                  type="number"
+                  inputmode="decimal"
+                  step="any"
+                  required
+                  aria-describedby="error-rx-gain"
+                />
+                <span class="field__unit">dBi</span>
+              </div>
+              <p class="field__error" id="error-rx-gain" role="alert" hidden></p>
+            </div>
+
+            <div class="field" data-field="systemLossesDb">
+              <label class="field__label" for="input-system-losses">System Losses</label>
+              <div class="field__control">
+                <input
+                  id="input-system-losses"
+                  name="systemLossesDb"
+                  type="number"
+                  inputmode="decimal"
+                  step="any"
+                  min="0"
+                  required
+                  aria-describedby="error-system-losses"
+                />
+                <span class="field__unit">dB</span>
+              </div>
+              <p class="field__error" id="error-system-losses" role="alert" hidden></p>
+            </div>
+
+            <div class="field field--wide" data-field="receiverSensitivityDbm">
+              <label class="field__label" for="input-sensitivity">Receiver Sensitivity</label>
+              <div class="field__control">
+                <input
+                  id="input-sensitivity"
+                  name="receiverSensitivityDbm"
+                  type="number"
+                  inputmode="decimal"
+                  step="any"
+                  required
+                  aria-describedby="error-sensitivity"
+                />
+                <span class="field__unit">dBm</span>
+              </div>
+              <p class="field__error" id="error-sensitivity" role="alert" hidden></p>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button type="button" id="btn-reset" class="btn btn--secondary">
+              <svg class="btn__icon" viewBox="0 0 20 20" aria-hidden="true">
+                <path fill="currentColor" d="M10 3a7 7 0 1 0 5.66 11.14l-1.42 1.42A9 9 0 1 1 10 1v2.5L6.5 0 10 3.5V3z"/>
+              </svg>
+              Reset
+            </button>
+          </div>
+        </form>
+
+        <ul id="message-warnings" class="messages messages--warn" hidden></ul>
+      </section>
+
+      <section class="panel panel--results" aria-labelledby="results-heading">
+        <div class="panel__header panel__header--row">
+          <div>
+            <h2 id="results-heading">Results</h2>
+            <p class="panel__hint">Free-space model only — not for deployment sign-off.</p>
+          </div>
+          <button type="button" id="btn-copy" class="btn btn--ghost" disabled aria-describedby="copy-hint">
+            <svg class="btn__icon" viewBox="0 0 20 20" aria-hidden="true">
+              <path fill="currentColor" d="M6 2a2 2 0 0 0-2 2v10h2V4h8V2H6zm4 4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-8zm0 2h8v10h-8V8z"/>
+            </svg>
+            Copy Results
+          </button>
+          <p id="copy-hint" class="sr-only">Copies a formatted text summary of inputs and results.</p>
+        </div>
+
+        <p class="scope-notice" id="results-scope-notice">
+          Free-space FSPL only. Rain attenuation, multipath, diffraction, terrain,
+          atmospheric absorption, and ITU-R availability are not calculated.
+        </p>
+
+        <div id="results-container" class="result-cards" aria-live="polite" aria-relevant="additions text"></div>
+
+        <div class="verdict">
+          <p class="verdict__scope" id="verdict-scope-label">Sensitivity check — relative to entered receiver sensitivity only</p>
+          <div id="out-status" class="verdict__status" role="status" hidden>
+            <span class="verdict__indicator" id="out-status-icon" aria-hidden="true"></span>
+            <span class="verdict__label" id="out-status-label">—</span>
+          </div>
+          <div id="out-recommendation" class="verdict__recommendation" hidden>
+            <p class="verdict__headline" id="out-recommendation-headline"></p>
+            <p class="verdict__detail" id="out-recommendation-detail"></p>
+          </div>
+        </div>
+
+        <aside class="formula-card" aria-labelledby="formula-heading">
+          <h3 id="formula-heading">Engineering Equations</h3>
+          <ol class="formula-list">
+            <li>
+              <span class="formula-list__name">EIRP</span>
+              <code>EIRP = P<sub>TX</sub> + G<sub>TX</sub></code>
+            </li>
+            <li>
+              <span class="formula-list__name">FSPL</span>
+              <code>FSPL = 92.45 + 20·log₁₀(f<sub>GHz</sub>) + 20·log₁₀(d<sub>km</sub>)</code>
+            </li>
+            <li>
+              <span class="formula-list__name">RSL</span>
+              <code>P<sub>RX</sub> = P<sub>TX</sub> + G<sub>TX</sub> + G<sub>RX</sub> − FSPL − L<sub>sys</sub></code>
+            </li>
+            <li>
+              <span class="formula-list__name">Margin</span>
+              <code>Margin = P<sub>RX</sub> − P<sub>sens</sub></code>
+            </li>
+          </ol>
+        </aside>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p class="footer__copy">© 2026 WAVTIUS</p>
+      <p class="footer__tagline">Powering Wireless Innovation</p>
+    </footer>
+  </div>
+
+  <script src="js/domain/linkBudget.js"></script>
+  <script src="js/application/calculateLinkBudget.js"></script>
+  <script src="js/ui/app.js"></script>
+</body>
+</html>

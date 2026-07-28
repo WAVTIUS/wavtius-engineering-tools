@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 48" role="img" aria-label="WAVTIUS">
+  <defs>
+    <linearGradient id="wavtius-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E8C547"/>
+      <stop offset="100%" stop-color="#D4AF37"/>
+    </linearGradient>
+  </defs>
+  <path d="M8 36 L8 12 Q8 4 16 4 L28 4" fill="none" stroke="url(#wavtius-gold)" stroke-width="3" stroke-linecap="round"/>
+  <path d="M14 36 L14 18 Q14 10 22 10 L28 10" fill="none" stroke="url(#wavtius-gold)" stroke-width="2.5" stroke-linecap="round" opacity="0.85"/>
+  <circle cx="30" cy="10" r="3" fill="#D4AF37"/>
+  <text x="42" y="32" font-family="IBM Plex Sans, Segoe UI, Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="3" fill="#E8EAED">WAVTIUS</text>
+</svg>
