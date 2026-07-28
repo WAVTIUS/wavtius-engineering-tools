@@ -259,8 +259,6 @@ wavtius-link-budget-calculator/
 │   └── wavtius-logo.svg
 ├── css/
 │   └── styles.css
-├── docs/
-│   └── examples.md
 ├── js/
 │   ├── domain/
 │   │   └── linkBudget.js
