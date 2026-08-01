@@ -20,9 +20,9 @@ No server required.
 
 # Project Overview
 
-
+<p align="center">
   <img src="assets/demo.png" width="90%" alt="WAVTIUS Microwave Link Budget Calculator">
-
+</p>
 
 The WAVTIUS Microwave Link Budget Calculator performs **free-space** link budget analysis for point-to-point microwave paths. It computes Effective Isotropic Radiated Power (EIRP), Free Space Path Loss (FSPL), Received Signal Level (RSL), and Link Margin from user-supplied parameters, then compares the calculated RSL against the entered receiver sensitivity using a **PASS / FAIL (Sensitivity)** indicator and free-space advisory recommendations.
 
