@@ -1,14 +1,28 @@
 # WAVTIUS Microwave Link Budget Calculator
 
-Professional **free-space** microwave link budget calculator for preliminary **point-to-point** path assessment by RF engineers, wireless consultants, and telecom professionals.
+## 🚀 Live Demo
+
+👉 [Launch the Live Demo](https://wavtius.github.io/wavtius-engineering-tools/link-budget-calculator/)
+
+Professional free-space microwave link budget calculator for preliminary point-to-point path assessment, designed for RF engineers, wireless consultants, telecom professionals, researchers, and students.
 
 **Powering Wireless Innovation**
 
-> Open `index.html` in a browser. No server or build step required.
+## Source Code
+
+Clone or download this repository, then open `index.html` in any modern web browser.
+
+No installation required.
+No build tools.
+No server required.
 
 ---
 
 # Project Overview
+
+<p align="center">
+  <img src="assets/demo.png" width="90%" alt="WAVTIUS Microwave Link Budget Calculator">
+</p>
 
 The WAVTIUS Microwave Link Budget Calculator performs **free-space** link budget analysis for point-to-point microwave paths. It computes Effective Isotropic Radiated Power (EIRP), Free Space Path Loss (FSPL), Received Signal Level (RSL), and Link Margin from user-supplied parameters, then compares the calculated RSL against the entered receiver sensitivity using a **PASS / FAIL (Sensitivity)** indicator and free-space advisory recommendations.
 
@@ -21,14 +35,14 @@ Designed as the first tool in the **WAVTIUS Engineering Tools** collection, this
 | Audience | RF engineers, wireless consultants, telecom operators, students |
 | Runtime | Static web application |
 | Stack | HTML, CSS, Vanilla JavaScript |
-
+| License | MIT License |
 ---
 
 # Features
 
 - Real-time engineering calculations
 - Automatic updates while typing
-- Engineering outputs:
+- Engineering calculations:
   - Effective Isotropic Radiated Power (EIRP)
   - Free Space Path Loss (FSPL)
   - Received Signal Level (RSL)
@@ -62,7 +76,7 @@ The following assumptions apply:
 | Earth curvature | Not modelled |
 | Fresnel clearance | Not modelled |
 | Interference | Not modelled |
-| Receiver sensitivity | User supplied |
+| Receiver sensitivity | User-defined |
 | Polarization | Assumed ideal |
 | Antenna alignment | Assumed perfect |
 
@@ -79,8 +93,9 @@ If the available value is the **radio output power**, subtract the **TX feedline
 Displayed values are rounded to **two decimal places**.
 
 ---
-
 # Engineering Equations
+
+The calculator uses the following engineering equations.
 
 ## Effective Isotropic Radiated Power (EIRP)
 
@@ -170,7 +185,7 @@ This release intentionally **does not include**:
 - Equipment databases
 - Unit conversion
 
-Results from this tool are suitable for **preliminary path assessment and engineering education**.
+Results from this tool are suitable for **preliminary path assessment, engineering studies, and educational purposes**.
 
 Final microwave designs require complete propagation, availability, interference, and equipment-specific analysis.
 
@@ -185,11 +200,7 @@ Simply:
 1. Download or clone the repository.
 2. Open `index.html` in any modern web browser.
 
-No server.
-
-No Node.js.
-
-No build tools.
+No server, Node.js, or build tools are required.
 
 ---
 
@@ -312,26 +323,7 @@ This calculator follows widely accepted RF engineering principles and standard f
 - Friis Transmission Equation
 - ITU-R Recommendation P.525 (Free-Space Propagation)
 - Standard Microwave Link Budget Methodology
-- IEEE RF and Microwave Engineering Practices
-
----
-
-# Future Improvements
-
-- Separate TX/RX cable losses
-- Connector losses
-- Radome losses
-- Rain fade modelling (ITU-R P.530)
-- Atmospheric absorption
-- Fresnel Zone analysis
-- Terrain profile integration
-- Earth curvature analysis
-- Equipment database
-- Automatic antenna gain calculation
-- Unit conversion
-- PDF export
-- Scenario save/load
-- Additional WAVTIUS engineering tools
+- IEEE RF and Microwave Engineering Standards
 
 ---
 
